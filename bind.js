@@ -1,3 +1,9 @@
+/**
+ * bind
+ * 'this'や引数の参照先を変更する。
+ * 使用時点で実行はしない（call, applyでは使用と同時に実行する）
+ **/
+
 window.name = 'ジョン'
 
 const person = {
