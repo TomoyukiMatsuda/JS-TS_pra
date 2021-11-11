@@ -36,3 +36,13 @@ const a = func('コンソール', console.log)
 a.fn()
 const b = func('アラート', alert)
 b.fn()
+
+// クロージャーで引数を固定する？
+function hello(name) {
+  return function() {
+    console.log('ハロー ' + name)
+  }
+}
+
+setTimeout(hello('トム'), 1000)
+hello('松田')()
