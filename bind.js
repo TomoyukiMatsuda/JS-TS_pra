@@ -32,3 +32,24 @@ function fn2(name) {
 
 const fnName = fn2.bind(null, 'ティム')
 fnName()
+
+
+function factory(val, callback) {
+  return {
+    func(target) {
+      const newVal = val + target
+      // 引数をbindの第２引数で束縛した新しい関数を生成している。この時点では作成のみで実行していない。
+      // そのためちゃんと１秒後に実行される
+      setTimeout(callback.bind(null, `${val} + ${target} = ${newVal}`), 1000)
+      setTimeout(() => callback(`${val} + ${target} = ${newVal}`), 2000) // これでもok
+
+      // これだとコールバック関数が引数に渡った時点で実行されてしまう。そのため1秒後ではなくすぐに実行される。
+      // setTimeoutにはコールバック関数を渡す必要があるものの、この場合には関数の実行結果がsetTimeoutに引数として渡る。
+      // つまりconsole.logの場合返り値はvoidのはずなので何も渡ってない？ということになりそう。
+      setTimeout(callback(null, `${val} + ${target} = ${newVal}`), 1000)
+      val = newVal
+    }
+  }
+}
+// 今回の場合はコンソール
+factory(10, console.log).func(5)
