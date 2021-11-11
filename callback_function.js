@@ -23,3 +23,16 @@ after1s(obj.greeting)
 obj.greeting = function() {
   console.log("ヘイ")
 }
+
+// 第２引数のコールバック関数に渡す関数により処理を切り替える
+function func(val, callback) {
+  return {
+    fn: function() {
+      callback(val)
+    }
+  }
+}
+const a = func('コンソール', console.log)
+a.fn()
+const b = func('アラート', alert)
+b.fn()
