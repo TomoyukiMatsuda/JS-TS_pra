@@ -13,3 +13,7 @@ const matsuda = new Person('まつだ', 28)
 console.log(matsuda)
 // インスタンス化した際にはprototypeの参照が__proto__にコピーされる
 matsuda.hello()
+
+// コンストラクター関数の戻り値がオブジェクト以外の場合は
+// __proto__ にprototypeをコピーしたオブジェクトを返す
+// このオブジェクトを'this'の参照先としてコンストラクター関数を実行する
