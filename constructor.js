@@ -18,3 +18,12 @@ matsuda.hello()
 // __proto__ にprototypeをコピーしたオブジェクトを返す
 // このオブジェクトを'this'の参照先としてコンストラクター関数を実行する
 // new Person('name', 30) __proto__ にprototypeをコピーしたオブジェクトを返す
+function F(a, b) {
+  this.a = a
+  this.b = b
+}
+
+F.prototype.c = function() {}
+const instance = new F(1, 2)
+console.log(instance)
+
