@@ -18,12 +18,23 @@ matsuda.hello()
 // __proto__ にprototypeをコピーしたオブジェクトを返す
 // このオブジェクトを'this'の参照先としてコンストラクター関数を実行する
 // new Person('name', 30) __proto__ にprototypeをコピーしたオブジェクトを返す
+
+console.log("------------------- __prototype__ ----------------------")
 function F(a, b) {
   this.a = a
   this.b = b
+  return {a: 1}
 }
 
 F.prototype.c = function() {}
-const instance = new F(1, 2)
+// new 演算子が実際に行っている挙動を自分で書いてみる
+function newOpe(C, ...args) {
+  const _this = Object.create(C.prototype)
+  const result = C.apply(_this, args)
+  console.log(result, _this)
+  if (typeof result === "object" && result !== null) {
+    return result
+  }
+}
+const instance = newOpe(F, 1, 2)
 console.log(instance)
-
