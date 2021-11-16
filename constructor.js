@@ -19,7 +19,7 @@ matsuda.hello()
 // このオブジェクトを'this'の参照先としてコンストラクター関数を実行する
 // new Person('name', 30) __proto__ にprototypeをコピーしたオブジェクトを返す
 
-console.log("------------------- __prototype__ ----------------------")
+console.log("------------- __prototype__ ----------------")
 function F(a, b) {
   this.a = a
   this.b = b
@@ -42,7 +42,7 @@ function newOpe(C, ...args) {
 const instance = newOpe(F, 1, 2)
 console.log(instance)
 
-console.log("------------------- instanceof ----------------------")
+console.log("-------------- instanceof -----------------")
 
 const ins = new F(1, 2)
 console.log(ins instanceof Object) // プロトタイプチェーンで比較（Objectは親）
@@ -58,3 +58,15 @@ function fn(arg) {
   console.log(arg)
 }
 fn({})
+
+console.log("----------- 関数コンストラクター --------------")
+
+const fn1 = new Function('a', 'b', 'return a * b')
+const result = fn1(3, 4)
+console.log(result)
+
+// 関数コンストラクターで行っていること
+function fn2(a, b) {
+  return a * b;
+}
+console.log(fn2 instanceof Function)
