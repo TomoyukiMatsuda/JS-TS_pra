@@ -18,9 +18,11 @@ console.log(bob.hasOwnProperty('age'))
 // in はprototypeを含めて該当のpropertyが存在するかどうかを確認する
 console.log('hello' in bob)
 
-function Japanese(name, age) {
+function Japanese(name, age, gender) {
   // Personのプロパティを継承する
   Person.call(this, name, age)
+  // Japanese固有のプロパティ
+  this.gender = gender
 }
 // PersonのprototypeをJapaneseのprototypeに継承する
 Japanese.prototype = Object.create(Person.prototype)
