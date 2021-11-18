@@ -1,3 +1,5 @@
+'use strict'
+
 // ビルトインオブジェクト
 // jsエンジンに標準で用意されているオブジェクト群
 const arry = new Array(1, 2, 3, 4)
@@ -26,3 +28,18 @@ String.prototype[s] = function() {
 }
 const tom = 'Tom'
 console.log(tom[s]()) // hello Tom
+
+// プロパティとディスクリプター
+// const obj = {prop: 0}
+const obj = {}
+// それぞれのプロパティにはディスクリプターという設定がされている
+Object.defineProperty(obj, 'prop', {
+  value: 10,
+  writable: true, // 値の書き換え可能にする
+  configurable: true // 設定を変えることを許可する（delete可能に）
+})
+delete obj.prop
+//obj.prop = 0
+console.log(obj.prop)
+const descriptor = Object.getOwnPropertyDescriptor(obj, 'prop')
+console.log(descriptor)
