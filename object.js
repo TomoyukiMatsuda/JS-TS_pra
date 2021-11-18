@@ -43,3 +43,55 @@ delete obj.prop
 console.log(obj.prop)
 const descriptor = Object.getOwnPropertyDescriptor(obj, 'prop')
 console.log(descriptor)
+
+function Person(name, age) {
+  this._name = name
+  this._age = age
+}
+
+// これでもstaticメソッドを作成できる
+Person.hello = function() {
+  console.log('staticメソッドを代入')
+}
+Person.hello()
+
+Object.defineProperty(Person.prototype, 'name', {
+  get: function() {
+    // ここに何らかの処理を実行したりできる
+    return this._name
+  },
+  set: function(val) {
+    // ここに何らかの処理を実行したりできる
+    this._name = val
+  }
+})
+const p = new Person('ボブ', 22)
+console.log(p.name) // =>ボブ  この時にgetが呼ばれる
+p.name = 'トム' // この時にsetが呼ばれる
+console.log(p.name) // =>トム  この時にgetが呼ばれる
+
+class Person2 {
+  // Object.defineProperty() でgetterとsetterをセットするのと同じこと
+  constructor(name, age) {
+    this._name = name
+    this._age = age
+  }
+
+  get name() {
+//    console.log('hello')
+    return this._name
+  }
+  set name(val) {
+    this._name = val
+  }
+
+  static hello() {
+    console.log('staticメソッド, こんちはーーーー', this._name) // thisは基本的に利用できない undefined
+  }
+}
+Person2.hello()
+const p2 = new Person2('パーソン２', 22)
+console.log(p2.name) // =>ボブ  この時にgetが呼ばれる
+p2.name = 'パーソン3' // この時にsetが呼ばれる
+console.log(p2.name) // =>トム  この時にgetが呼ばれる
+console.log(p2)
