@@ -9,6 +9,16 @@ while(i < 10) {
   i++
 }
 
+console.log('+++++++++++++++++++++++++++++++++++++')
+
+for(let num = 0; num < 5; num++) {
+  // 反復処理実行ごとに異なるメモリ空間にkakeruの変数領域が設けられる
+  const kakeru = num * 2
+  console.log(kakeru)
+ }
+
+ console.log('+++++++++++++++++++++++++++++++++++++')
+
 // 演算子
 let a = 0
 let b = ++a // aに++した後の結果をreturnする
@@ -27,3 +37,4 @@ function fn() {
 }
 // !fn()で0がtrueになる、true*5で数値型変換がされて1*5となる
 console.log(!fn()*5) // 5
+
