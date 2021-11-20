@@ -38,3 +38,27 @@ function fn() {
 // !fn()で0がtrueになる、true*5で数値型変換がされて1*5となる
 console.log(!fn()*5) // 5
 
+console.log('########### for...in ##############')
+// for...in: Symbolで定義したプロパティはfor...inで列挙対象にならない
+const s = Symbol()
+const obj = {
+//key: value
+  prop1: 'value1',
+  prop2: 'value2',
+  prop3: 'value3',
+  // 変数をプロパティとして利用したい場合は[変数]とできる
+  [s]: 'value4' // シンボルは for...in での列挙対象にはならない
+}
+
+Object.prototype.method = function() {}
+Object.defineProperty(Object.prototype, 'method', {
+  // 列挙可能性をオフ
+//  enumerable: false
+})
+console.log(Object.getOwnPropertyDescriptor(Object.prototype, 'method'))
+
+for(let key in obj) {
+//  if (obj.hasOwnProperty(key)) {
+  console.log(key, obj[key])
+  //}
+}
