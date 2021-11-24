@@ -8,9 +8,19 @@ function sleep(ms) {
   // セミコロンなしだとこうやってjsエンジンに解釈されているよう
   // while(new Date() - startTime < ms) console.log('スリープ処理終了');
 }
-sleep(3000)
+// sleep(3000)
 
 const btn = document.querySelector('button');
-btn.addEventListener('click', function() {
-  console.log('ボタンクリック')
-})
+btn.addEventListener('click', function task2() {
+  console.log('task2 完了')
+});
+
+function a() {
+  setTimeout(function task1() {
+    console.log('task1 完了')
+  }, 4000)
+
+ sleep(5000)
+};
+
+a();
