@@ -22,5 +22,20 @@ function a() {
 
  sleep(5000)
 };
+//a();
 
-a();
+function c(fn) {
+  // setTimeoutを利用するとタスクキューを経由するため実行が遅れる
+  setTimeout(function t1() {
+    console.log('setTimeout 完了')
+    fn()
+  })
+
+  console.log('fn c 完了')
+}
+
+function d() {
+  console.log('fn d 完了')
+}
+c(d)
+//d()
