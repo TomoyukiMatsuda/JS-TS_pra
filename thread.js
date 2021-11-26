@@ -24,18 +24,22 @@ function a() {
 };
 //a();
 
-function c(fn) {
+function c(fn, val) {
   // setTimeoutを利用するとタスクキューを経由するため実行が遅れる
   setTimeout(function t1() {
-    console.log('setTimeout 完了')
-    fn()
-  })
-
-  console.log('fn c 完了')
+    console.log('setTimeout',val++)
+    fn(val)
+  }, 1000)
 }
 
-function d() {
-  console.log('fn d 完了')
-}
-c(d)
-//d()
+c(function (val) {
+  c(function (val) {
+    c(function (val) {
+      c(function (val) {
+        c(function (val) {
+
+        }, val)
+      }, val)
+    }, val)
+  }, val)
+}, 0)
