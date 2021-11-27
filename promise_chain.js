@@ -32,3 +32,13 @@ Promise.all([sleep(1), sleep(2), sleep(3), sleep(4)])
 // .then(function (val) {
 //   return sleep(val)
 // })
+
+// then()の第２引数に関数を設定したときには、catchメソッドのコールバック関数と同じ意味になる
+// then(成功時の処理、失敗時の処理）
+const prom = new Promise(((resolve, reject) => reject('error')))
+prom
+.then((data) => {
+  console.log('data')
+}, (error) => {
+  console.log('thenの第２引数をセット' , error)
+})
