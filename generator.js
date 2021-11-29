@@ -45,3 +45,15 @@ Object.prototype[Symbol.iterator] = function*() {
 for (const item of items) {
   console.log(item)
 }
+
+console.log('############ Generator関数 ################')
+const stepIt = genStep({min: 4, max: 10, step: 2})
+for (let value of stepIt) {
+  console.log(value)
+}
+
+function* genStep({min = 0, max = 20, step = 1 }) {
+  for (let i = min; i <= max; i += step) {
+    yield i
+  }
+}
