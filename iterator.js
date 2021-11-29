@@ -58,3 +58,31 @@ Object.prototype[Symbol.iterator] = function() {
 for(let item of items) {
   console.log(item)
 }
+
+console.log('############### 練習問題 ###############')
+const stepIt = genStep(4, 10, 2)
+let stepObj = stepIt.next()
+
+while (!stepObj.done) {
+  console.log(stepObj.value) // -> 4, 6, 8, 10
+  stepObj = stepIt.next()
+}
+
+function genStep(min = 0, max = 20, step = 1) {
+  let num = min - step
+
+  return {
+    next: () => {
+      num += step
+
+      if (num > max) {
+        return {done: true}
+      } else {
+        return {
+          done: false,
+          value: num,
+        }
+      }
+    }
+  }
+}
