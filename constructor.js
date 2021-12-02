@@ -70,3 +70,18 @@ function fn2(a, b) {
   return a * b;
 }
 console.log(fn2 instanceof Function)
+
+console.log('######### 2回目 ##############')
+function Person3(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+Person3.prototype.ok = function () {
+  console.log('OK!!! ' + this.name)
+}
+const p = new Person3('パーソン', 22)
+p.ok() // p.__proto__.ok() の __proto__ が省略されている
+
+// 同じ参照を保持している
+console.log(Person3.prototype === p.__proto__) // true
