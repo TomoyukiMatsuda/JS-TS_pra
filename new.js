@@ -4,7 +4,7 @@ function F(a, b) {
   // return を記載しない or プリミティブ型を return する場合には this が返る
 
   // 返り値がオブジェクトの場合はオブジェクトがそのまま返る
-  return {}
+  // return {}
 }
 
 // return {} 返り値をオブジェクトにするとprototypeは設定されない
