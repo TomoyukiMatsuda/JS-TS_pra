@@ -52,9 +52,23 @@ class Person2 {
     this._age = val
   }
 
+  instanceMethod() {
+    console.log('インスタンスメソッド')
+
+    // 以下２行は同じ処理
+    console.log(Person2.STATIC_PROP)
+    console.log(this.constructor.STATIC_PROP)
+
+    // 以下２行は同じ処理
+    this.constructor.hello()
+    Person2.hello()
+  }
+
+  static STATIC_PROP = 'staticプロパティ'
   static hello() {
     // staticメソッドはインスタンスから呼ばれる訳ではないため、thisにはアクセスできない
     console.log('this: ', this) // class Person2 自信が出力されてしまう
+    console.log('STATIC_PROP', this.STATIC_PROP)
     console.log('ハローーーー')
   }
 }
@@ -63,3 +77,4 @@ const p2 = new Person2('パーソン2', 29)
 console.log(p2.age)
 p2.age = 33
 Person2.hello()
+p2.instanceMethod()
