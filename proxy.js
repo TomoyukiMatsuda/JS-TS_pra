@@ -12,6 +12,7 @@ const handler = {
     if (target.hasOwnProperty(prop)) {
       return target[prop]
     } else {
+      // 値が見つからなかったときには、-1を出力
       return -1
     }
   },
@@ -26,5 +27,7 @@ pxy.a = 1
 
 let aa = pxy.a
 console.log(aa)
+console.log(pxy.b) // 値が見つからなかったときには、-1を出力
+
 delete pxy.a
 console.log(targetObj)
