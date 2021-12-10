@@ -34,3 +34,27 @@ const tom = {
 tom.hello
 Reflect.get(tom, 'hello') // tom.hello と同じ
 Reflect.get(tom, 'hello', bob) // 第３引数（bob）はhelloのthisを束縛する
+
+console.log('######### ProxyとReflect ############')
+const targetObj = {
+  a: 0,
+  get value() {
+    return this.a
+  }
+}
+const handler = {
+  get: function (target, prop, receiver) {
+    console.log(`[get]: ${prop}`)
+    if (target.hasOwnProperty(prop)) {
+      //return target[prop]
+      console.log('receiver:', receiver)
+      return Reflect.get(target, prop, receiver) // 第３引数でthisを束縛
+    } else {
+      return -1
+    }
+  }
+}
+const pxy = new Proxy(targetObj, handler)
+console.log(pxy.a)
+console.log(pxy.b)
+console.log(pxy.value)
