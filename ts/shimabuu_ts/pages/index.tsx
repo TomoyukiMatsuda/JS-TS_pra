@@ -24,16 +24,37 @@ const func = (): void => {
 };
 
 // never ありえない値
-const foo = (bar: "a" | "b") => {
-  switch (bar) {
-    case "a":
-      return 1;
-    case "b":
-      return 2;
-    default:
-      bar; // never型 defaultに到達するはずないので never型になる
-  }
+// const foo = (bar: "a" | "b") => {
+//   switch (bar) {
+//     case "a":
+//       return 1;
+//     case "b":
+//       return 2;
+//     default:
+//       bar; // never型 defaultに到達するはずないので never型になる
+//   }
+// };
+
+// オブジェクト（辞書型）
+// null undefined 以外なんでも入ってしまう
+let obj1: {} = 111;
+// 非プリミティブ型であればなんでも入ってしまう
+let obj2: object = [];
+// Record
+let obj3: Record<string, unknown> = { a: 1, b: "foo" };
+// インデックスシグネチャ
+let obj4: { [key: string]: unknown; foo: { bar: string } } = {
+  a: 1,
+  b: "bar",
+  foo: {
+    bar: "str",
+  },
 };
+
+obj3.foo = "bar";
+obj4.foo.bar = "";
+
+console.log(obj4);
 
 const Home: NextPage = () => {
   return <Component foo />;
