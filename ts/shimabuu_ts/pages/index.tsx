@@ -56,6 +56,23 @@ obj4.foo.bar = "";
 
 console.log(obj4);
 
+// intersection types
+type Hoge = {
+  a: string;
+  b: number;
+};
+type HogeHoge = {
+  c: number;
+  d: boolean;
+};
+type HogeHogeHoge = Hoge | HogeHoge;
+// Union Typesはどちらかを満たしていればOKになる（どちらかになる、ではない）
+const test: HogeHogeHoge = {
+  a: "",
+  c: 11,
+  d: false,
+};
+
 const Home: NextPage = () => {
   return <Component foo />;
 };
