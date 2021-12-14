@@ -73,6 +73,57 @@ const test: HogeHogeHoge = {
   d: false,
 };
 
+// interface 基本的にはオブジェクトの型定義に利用する
+
+// open-ended: 同じ名前の型が存在した時に型がマージされる
+interface Foo {
+  a: number;
+}
+interface Foo {
+  b: string;
+}
+// 上記2つの型がマージされる
+const fooVal: Foo = {
+  a: 1,
+  b: "str",
+};
+// interface は extends で継承できる、typeは継承できない
+interface ChildFoo extends Foo {
+  c: boolean;
+}
+const childFoo: ChildFoo = {
+  a: 11,
+  b: "str",
+  c: true,
+};
+// typeの場合継承のようなことをする時は & を利用する（Intersection types）
+type TFoo = {
+  a: number;
+};
+type TBar = {
+  b: string;
+} & TFoo;
+
+// typeは同じ名前で型宣言できない
+// type Bar = {
+//   a: number
+// };
+// type Bar = {
+//   a: number
+// };
+
+// type では Mapped types が利用できる
+type Conbinis = "seven" | "lawson" | "famima" | "yamazaki";
+type ConbiniNum = {
+  [key in Conbinis]: number;
+};
+const conbinis: ConbiniNum = {
+  seven: 1,
+  lawson: 2,
+  famima: 3,
+  yamazaki: 4,
+};
+
 const Home: NextPage = () => {
   return <Component foo />;
 };
