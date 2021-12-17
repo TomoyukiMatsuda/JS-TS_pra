@@ -135,6 +135,7 @@ const Component = (props: { foo?: true }) => {
 const Home: NextPage = () => {
   return (
     <TwitterCard
+      type="tweet"
       user={{
         name: "まつだ",
         accountName: "matsudaaaaa_tk",

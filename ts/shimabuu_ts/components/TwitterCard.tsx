@@ -1,29 +1,41 @@
-import { string } from "prop-types";
-
-type TwitterCardProps = {
-  user: {
-    name: string;
-    accountName: string;
-    image: string;
-  };
-  body: {
-    text: string;
-    image?: string;
-  };
-  analytics: { path: string; count: number }[];
+type User = {
+  name: string;
+  accountName: string;
+  image: string;
 };
+type Body = {
+  text: string;
+  image?: string;
+};
+type Analytics = { path: string; count: number }[];
+
+type TweetProps = {
+  type: "tweet";
+};
+type RetweetProps = {
+  type: "retweet";
+  retweetedUser: string;
+};
+type PromotionProps = {
+  type: "promotion";
+};
+
+type CommonProps = { user: User; body: Body; analytics: Analytics };
+
+type TwitterCardProps = CommonProps &
+  (TweetProps | RetweetProps | PromotionProps);
 
 export const TwitterCard = (props: TwitterCardProps) => {
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">
       <div className="bg-white border-gray-200 p-4 rounded-xl border max-w-xl min-w-[480px]">
-        {/*{props.type === "retweet" || props.type === "promotion" ? (*/}
-        {/*  <div className="text-gray-500 text-sm mb-2">*/}
-        {/*    {props.type === "retweet"*/}
-        {/*      ? `${props.retweetedUser}さんがリツイートしました`*/}
-        {/*      : "プロモーション広告"}*/}
-        {/*  </div>*/}
-        {/*) : null}*/}
+        {props.type === "retweet" || props.type === "promotion" ? (
+          <div className="text-gray-500 text-sm mb-2">
+            {props.type === "retweet"
+              ? `${props.retweetedUser}さんがリツイートしました`
+              : "プロモーション広告"}
+          </div>
+        ) : null}
         {/* ユーザー */}
         <div className="flex items-center">
           <img
