@@ -1,3 +1,6 @@
+// うまくimport できない
+import {Person} from './person'
+
 // 弱参照のMap
 const wm = new WeakMap();
 
@@ -9,3 +12,7 @@ console.log(wm.get(o))
 console.log(wm.has(o))
 console.log(wm.delete(o))
 console.log(wm.get(o))
+
+const tim = new Person('tim')
+tim.hello()
+console.log(tim)
