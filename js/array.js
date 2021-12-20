@@ -41,3 +41,6 @@ const result = arr4.reduce((accuVal, currVal) => {
   return accuVal + currVal
 }, 10) // initialValue 初期値（省略した場合は配列の先頭が初期値となる）
 console.log('result', result)
+
+const joinArry = arr4.join('/')
+console.log(joinArry)
