@@ -35,6 +35,10 @@ const filterArry = arr4.filter((v, i, a) => {
 })
 console.log(filterArry)
 
+const findArry = [{a: 2}, {b: 10}, {c: 20}]
+const f = findArry.find(v => v.b)
+console.log('findの結果', f)
+
 console.log('######### reduce ############')
 const result = arr4.reduce((accuVal, currVal) => {
   console.log(accuVal, currVal)
