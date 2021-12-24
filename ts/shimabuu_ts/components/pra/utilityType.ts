@@ -50,3 +50,15 @@ type User = {
 };
 type Optional = "age" | "address" | "nationality" | "createdAt" | "updatedat";
 type OmitUser = Omit<User, Optional>; // Omit はupdatedat(Aが小文字)に気づいてくれない、コンパイルエラーもでない
+
+type SupportLang = "en" | "fr" | "it" | "es";
+type Butterfly = {
+  [key in SupportLang]: string;
+};
+const butterflies: Butterfly = {
+  en: "Butterfly",
+  fr: "Papillon",
+  it: "Farfalla",
+  es: "Mariposa",
+  // ja: '蝶' // エラー
+};
