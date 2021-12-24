@@ -20,3 +20,19 @@ const findPerson = async ({
 // PartialPerson = {} 関数呼び出し時に引数を省略できる
 findPerson();
 findPerson({ hobby: "散歩" });
+
+// Record<Keys, Type>
+// Keysに代入できる型は, string, number, symbol, とそれぞれのリテラル型
+type StrNum = Record<string, number>;
+const value: StrNum = {
+  a: 11,
+  b: 22,
+  c: 33,
+  d: 44,
+};
+type P = Record<"name" | "age" | "job", string | number>;
+const person: P = {
+  name: "ジョニー",
+  age: 22,
+  job: "Androidアプリエンジニア",
+};
