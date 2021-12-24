@@ -36,3 +36,17 @@ const person: P = {
   age: 22,
   job: "Androidアプリエンジニア",
 };
+
+// Omit
+type User = {
+  surname: string;
+  middleName?: string;
+  givenName: string;
+  age: number;
+  address?: string;
+  nationality: string;
+  createdAt: string;
+  updatedAt: string;
+};
+type Optional = "age" | "address" | "nationality" | "createdAt" | "updatedat";
+type OmitUser = Omit<User, Optional>; // Omit はupdatedat(Aが小文字)に気づいてくれない、コンパイルエラーもでない
