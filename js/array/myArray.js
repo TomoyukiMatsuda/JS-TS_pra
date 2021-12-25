@@ -22,6 +22,7 @@ class MyArray extends Array {
   push(val) {
     //return [...this, val]
     super.push(val)
+    // thisを返しているので、破壊的（元のインスタンスの状態を変えてしまう）
     return this;
   }
   forEach(callbackFn) {
@@ -29,6 +30,15 @@ class MyArray extends Array {
       callbackFn(this[i], i, this)
     }
   }
+  map(callbackFn) {
+    const newInstance = new MyArray();
+    for (let i = 0; i < this.length; i++) {
+      newInstance.push(callbackFn(this[i], i, this))
+    }
+    // 新しく生成したインスタンスを返しているので元のインスタンスには影響を及ぼさない（破壊的でない）
+    return newInstance;
+  }
+
 }
 
 function double(v, i, obj) {
@@ -37,12 +47,11 @@ function double(v, i, obj) {
 
 const original = new MyArray(1, 2, 3, 4);
 const result = original
-  .push(5)
-  .forEach((val,i, arry )=> {
-    console.log(val, i, arry)
-  })
+  .map(double)
 
-console.log(original.push(5))
+console.log(result)
+
+
 
 // const result = original
 //   .map(double)
