@@ -19,11 +19,15 @@ class MyArray extends Array {
     console.log(`%c ${label}`, 'color: blue; font-weight: 600;', this);
     return this;
   }
-  push(item) {
-    return [...this, item]
+  push(val) {
+    //return [...this, val]
+    super.push(val)
+    return this;
   }
-  forEach(callbackfn, thisArg) {
-    
+  forEach(callbackFn) {
+    for (let i = 0; i < this.length; i++) {
+      callbackFn(this[i], i, this)
+    }
   }
 }
 
@@ -32,6 +36,11 @@ function double(v, i, obj) {
 }
 
 const original = new MyArray(1, 2, 3, 4);
+const result = original
+  .push(5)
+  .forEach((val,i, arry )=> {
+    console.log(val, i, arry)
+  })
 
 console.log(original.push(5))
 
