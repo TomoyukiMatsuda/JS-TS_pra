@@ -75,7 +75,7 @@ class MyArray extends Array {
       accu = tmpArry.shift();
     }
     for (let i = 0; i < tmpArry.length; i++) {
-      
+
       accu = callbackFn(accu, tmpArry[i]);
     }
     return accu;
