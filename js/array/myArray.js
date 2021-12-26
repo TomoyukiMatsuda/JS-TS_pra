@@ -49,16 +49,51 @@ class MyArray extends Array {
     // 新しく生成したインスタンスを返しているので元のインスタンスには影響を及ぼさない（破壊的でない）
     return newInstance;
   }
+  myReduce(callbackFn, accu) {
+    //
+    // if (accu) {
+    //   for (let i = 0; i < this.length; i++) {
+    //     accu = callbackFn(accu, this[i])
+    //   }
+    //
+    //   return accu
+    // } else {
+    //   let accu
+    //   for (let i = 0; i < this.length; i++) {
+    //     if (accu) {
+    //       accu = callbackFn(accu, this[i])
+    //     } else {
+    //       accu = callbackFn(i, this[i])
+    //     }
+    //   }
+    //
+    //   return accu
+    // }
+    const tmpArry = [...this]
+    if (!accu) {
+      // 第２引数初期値が存在しなければ、配列の最初の値を返す
+      accu = tmpArry.shift();
+    }
+    for (let i = 0; i < tmpArry.length; i++) {
+      
+      accu = callbackFn(accu, tmpArry[i]);
+    }
+    return accu;
+  }
 }
 
 function double(v, i, obj) {
   return v * 2;
 }
+const reducer = (previousValue, currentValue) => previousValue + currentValue;
 
-const original = new MyArray(1, 2, 3, 4);
+const original = new MyArray(2, 4, 6, 8);
 const result = original
-  .myMap((val) => val * 3)
-  .myFilter((val) => val % 2 === 0)
+  .myReduce(reducer)
+  // .myMap((val) => val * 3)
+  // .myFilter((val) => val % 2 === 0)
+
+
 
 console.log(result)
 
