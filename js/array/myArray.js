@@ -19,18 +19,18 @@ class MyArray extends Array {
     console.log(`%c ${label}`, 'color: blue; font-weight: 600;', this);
     return this;
   }
-  push(val) {
+  myPush(val) {
     //return [...this, val]
     super.push(val)
     // thisを返しているので、破壊的（元のインスタンスの状態を変えてしまう）
     return this;
   }
-  forEach(callbackFn) {
+  myForEach(callbackFn) {
     for (let i = 0; i < this.length; i++) {
       callbackFn(this[i], i, this)
     }
   }
-  map(callbackFn) {
+  myMap(callbackFn) {
     const newInstance = new MyArray();
     for (let i = 0; i < this.length; i++) {
       newInstance.push(callbackFn(this[i], i, this))
@@ -38,7 +38,17 @@ class MyArray extends Array {
     // 新しく生成したインスタンスを返しているので元のインスタンスには影響を及ぼさない（破壊的でない）
     return newInstance;
   }
-
+  myFilter(callbackFn) {
+    const newInstance = new MyArray()
+    for (let i = 0; i < this.length; i++) {
+      console.log(this[i], callbackFn(this[i]))
+      if (callbackFn(this[i], i, this)) {
+        newInstance.push(this[i])
+      }
+    }
+    // 新しく生成したインスタンスを返しているので元のインスタンスには影響を及ぼさない（破壊的でない）
+    return newInstance;
+  }
 }
 
 function double(v, i, obj) {
@@ -47,7 +57,8 @@ function double(v, i, obj) {
 
 const original = new MyArray(1, 2, 3, 4);
 const result = original
-  .map(double)
+  .myMap((val) => val * 3)
+  .myFilter((val) => val % 2 === 0)
 
 console.log(result)
 
