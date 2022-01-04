@@ -1,3 +1,4 @@
+// Index Signature: 動的にプロパティを追加できる型定義方法？
 export type User = {
   name: string;
   age: number;
