@@ -2,14 +2,20 @@ export type User = {
   name: string;
 } & PersonalData;
 
-type Figi = "height" | "weight";
+//type Figi = "height" | "weight";
+type Foo = {
+  height?: number;
+  weight?: number;
+  realName?: string;
+};
 
 type PersonalData = {
-  [K in Figi]: number;
+  [K in keyof Foo]-?: number | string;
 };
 
 const user: User = {
   name: "まつ",
-  height: 175,
-  weight: 57,
+  height: 179,
+  weight: 58,
+  realName: "リアルネーム",
 };
