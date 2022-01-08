@@ -28,11 +28,11 @@ const p = new Person('松田', 29)
 console.log(p)
 p.hello()
 
-
 class Jap extends Person {
-  constructor(props, props2) {
-    // super(name, age) って感じで親コンストラクタを実行
+  constructor(props, props2, childProp) {
+    // super(name, age) って感じで親クラスのコンストラクタを実行
     super(props, props2);
+    this.childProp = childProp // 小クラス独自のプロパティを追加
     console.log('constructor', props, props2)
   }
   bye() {
