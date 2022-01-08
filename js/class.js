@@ -1,14 +1,19 @@
 class Person {
-  // コンストラクター
+  static STATIC_PROP = 'スタティックプロパティ'
+  static staticMethod() {
+    console.log('スタティックメソッド:' + Person.STATIC_PROP)
+  }
+
   constructor(name, age) {
     this.name = name
     this.age = age
   }
-  // prototype宣言
+  // prototype宣言、インスタンスメソッド
   hello() {
     console.log('ハロー ' + this.name)
   }
 }
+Person.staticMethod()
 
 // 上記のclassでは以下のことと同じことをやっている
 // function Person(name, age) {
@@ -18,7 +23,7 @@ class Person {
 // Person.prototype.hello = function() {
 //   console.log('ハロー ' + this.name)
 // }
-
+// new するとコンストラクタが実行されて、その中で使われているthisがnew演算子の結果として返される
 const p = new Person('松田', 29)
 console.log(p)
 p.hello()
