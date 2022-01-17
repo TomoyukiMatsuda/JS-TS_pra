@@ -19,3 +19,13 @@ const user: User = {
   weight: 58,
   realName: "リアルネーム",
 };
+
+const data = {
+  init: 1,
+  active: 2,
+} as const;
+
+type DataType = {
+  [K in keyof typeof data]: typeof data[K];
+};
+type Data = typeof data[keyof typeof data];
