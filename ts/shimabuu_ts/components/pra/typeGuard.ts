@@ -23,3 +23,14 @@ const foo = (value: UserA1 | UserA2 | UserB) => {
   }
   return value.name + " は外国人";
 };
+
+const isUserA = (user: UserA1 | UserA2): user is UserA1 => {
+  return user.lang === "ja";
+};
+
+const fn = (val: any) => {
+  if (isUserA(val)) {
+    return val.name + " はUserA1です";
+  }
+  return val;
+};
