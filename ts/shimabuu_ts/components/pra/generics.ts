@@ -20,3 +20,15 @@ const matsudaAdana: Foo<"まっち" | "ともちん"> = {
   value: "まっち",
 };
 const num: FooType = { value: 3 };
+
+// genericsを利用しない
+const returnNum = (num1: number) => num1;
+const returnStr = (str: string) => str;
+
+const numnum = returnNum(25);
+const strstr = returnStr("str");
+
+// genericsを利用する
+const returnVal = <T>(value: T) => value;
+const s = returnVal<string>("str");
+const n = returnVal<number>(11);
