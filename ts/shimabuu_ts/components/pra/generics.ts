@@ -29,6 +29,6 @@ const numnum = returnNum(25);
 const strstr = returnStr("str");
 
 // genericsを利用する
-const returnVal = <T>(value: T) => value;
+const returnVal = <T extends string | number>(value: T) => value;
 const s = returnVal<string>("str");
 const n = returnVal<number>(11);
