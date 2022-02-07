@@ -2,15 +2,16 @@ export type User = {
   name: string;
 } & PersonalData;
 
-//type Figi = "height" | "weight";
+//type Figi  = "height" | "weight";
 type Foo = {
   height?: number;
   weight?: number;
   realName?: string;
 };
 
+// -? で?を除いた型定義ができる、?をつければ
 type PersonalData = {
-  [K in keyof Foo]-?: number | string;
+  [K in keyof Foo]-?: Foo[K];
 };
 
 const user: User = {

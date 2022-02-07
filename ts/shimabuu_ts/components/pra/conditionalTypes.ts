@@ -1,4 +1,4 @@
-type Props = {
+export type Props = {
   id: string;
   name: string;
   age: number;
@@ -11,3 +11,6 @@ type Filter<T, U> = {
 
 // "id" | "name" となる
 type StringKeys = Filter<Props, string>;
+const sk: StringKeys = "name";
+type NumberKeys = Filter<Props, number>;
+const nk: NumberKeys = "age";
