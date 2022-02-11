@@ -26,6 +26,19 @@ type TwitterCardProps = CommonProps &
   (TweetProps | RetweetProps | PromotionProps);
 
 export const TwitterCard = (props: TwitterCardProps) => {
+  // オブジェクトの比較、しまぶーさん講座関係ないw
+  const target = { name: "松田", age: 10 };
+  const arr = [
+    { name: "も", age: 10 },
+    { name: "と", age: 0 },
+    { name: "まつ", age: 12 },
+    { name: "松田", age: 10 },
+  ];
+  console.log(
+    arr.map((a) => target.name === a.name && target.age === target.age)
+  );
+  console.log(arr.map((a) => Object.is(target, a)));
+
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">
       <div className="bg-white border-gray-200 p-4 rounded-xl border max-w-xl min-w-[480px]">
