@@ -1,5 +1,5 @@
 // K は T のkey名に限定される
-const getProperty = <T, K extends keyof T>(obj: T, key: K) => {
+export const getProperty = <T, K extends keyof T>(obj: T, key: K) => {
   return obj[key];
 };
 

@@ -1,4 +1,6 @@
 // Genericsには初期値を設定できる
+import { createElement } from "react";
+
 export type User<T = "大阪"> = {
   name: string;
   state: T;
@@ -32,3 +34,6 @@ const strstr = returnStr("str");
 const returnVal = <T extends string | number>(value: T) => value;
 const s = returnVal<string>("str");
 const n = returnVal<number>(11);
+
+export const addNumber = (...nums: number[]) =>
+  nums.reduce((acc, cur) => acc + cur, 0);
