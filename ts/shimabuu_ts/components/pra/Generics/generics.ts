@@ -35,5 +35,5 @@ const returnVal = <T extends string | number>(value: T) => value;
 const s = returnVal<string>("str");
 const n = returnVal<number>(11);
 
-export const addNumber = (...nums: number[]) =>
-  nums.reduce((acc, cur) => acc + cur, 0);
+const echo = <T>(arg: T): T => arg;
+const echo2: <T>(arg: T) => T = (arg) => arg;
