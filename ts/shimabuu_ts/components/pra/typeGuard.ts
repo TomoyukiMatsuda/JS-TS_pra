@@ -12,6 +12,14 @@ type UserA1 = { name: string; lang: "ja" };
 type UserA2 = { name: string; lang: "en" };
 type UserB = { name: string; nickName: string };
 
+// arrayかどうか
+const isArr = (val: string | string[]) => {
+  if (Array.isArray(val)) {
+    // 配列が返る
+    return val;
+  }
+  return val;
+};
 const foo = (value: UserA1 | UserA2 | UserB) => {
   if ("nickName" in value) {
     return value.nickName;

@@ -4,7 +4,7 @@ export type Props = {
   age: number;
 };
 
-// MappedTypes
+// Ma ppedTypes
 type Filter<T, U> = {
   [K in keyof T]: T[K] extends U ? K : never;
 }[keyof T];

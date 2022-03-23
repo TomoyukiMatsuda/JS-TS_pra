@@ -1,5 +1,3 @@
-import { addNumber } from "./pra/Generics/generics";
-
 type User = {
   name: string;
   accountName: string;
@@ -28,8 +26,6 @@ type TwitterCardProps = CommonProps &
   (TweetProps | RetweetProps | PromotionProps);
 
 export const TwitterCard = (props: TwitterCardProps) => {
-  console.log("addNumber", addNumber(3, 4, 11));
-
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">
       <div className="bg-white border-gray-200 p-4 rounded-xl border max-w-xl min-w-[480px]">

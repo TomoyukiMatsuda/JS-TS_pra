@@ -9,7 +9,7 @@ type Foo = {
   realName?: string;
 };
 
-// -? で?を除いた型定義ができる、?をつければ
+// -? で?を除いた(オプショナルを除いた）型定義ができる、?をつければオプショナルになる
 type PersonalData = {
   [K in keyof Foo]-?: Foo[K];
 };
