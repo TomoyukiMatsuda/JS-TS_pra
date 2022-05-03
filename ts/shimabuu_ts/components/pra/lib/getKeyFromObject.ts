@@ -15,12 +15,11 @@ export const getKeyByValue = <
   obj: OBJECT,
   val: VALUE
 ): KEY => {
-  // ここの無理クリ感がある
-  const convertedObj: Record<VALUE, KEY> = Object.fromEntries(
+  const keyValueReversedObj: Record<VALUE, KEY> = Object.fromEntries(
     Object.entries(obj).map(([key, value]) => [value, key])
   );
 
-  return convertedObj[val];
+  return keyValueReversedObj[val];
 };
 
 const key = getKeyByValue(UserStatusValue, 2);
