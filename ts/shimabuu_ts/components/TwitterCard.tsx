@@ -1,3 +1,5 @@
+import { getKeyByValue, UserStatusValue } from "./pra/lib/getKeyFromObject";
+
 type User = {
   name: string;
   accountName: string;
@@ -26,6 +28,8 @@ type TwitterCardProps = CommonProps &
   (TweetProps | RetweetProps | PromotionProps);
 
 export const TwitterCard = (props: TwitterCardProps) => {
+  console.log(getKeyByValue(UserStatusValue, 1));
+
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">
       <div className="bg-white border-gray-200 p-4 rounded-xl border max-w-xl min-w-[480px]">
