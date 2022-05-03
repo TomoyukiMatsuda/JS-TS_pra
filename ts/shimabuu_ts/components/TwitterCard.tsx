@@ -28,7 +28,7 @@ type TwitterCardProps = CommonProps &
   (TweetProps | RetweetProps | PromotionProps);
 
 export const TwitterCard = (props: TwitterCardProps) => {
-  console.log(getKeyByValue(UserStatusValue, 1));
+  console.log(getKeyByValue(UserStatusValue, 2));
 
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">

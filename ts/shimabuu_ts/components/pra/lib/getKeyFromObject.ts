@@ -1,7 +1,7 @@
 export const UserStatusValue = {
-  init: 0,
-  active: 1,
-  non: 2,
+  non: 0,
+  init: 1,
+  active: 2,
 } as const;
 
 type UserStatusKeyType = keyof typeof UserStatusValue;
