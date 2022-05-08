@@ -15,7 +15,7 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": false, // export しなくても error にならない
+    "isolatedModules": true, // export しなくても error にならない
     "jsx": "preserve",
     "incremental": true
   },

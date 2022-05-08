@@ -1,4 +1,8 @@
-import { getKeyByValue, UserStatusValue } from "./pra/lib/getKeyFromObject";
+import {
+  getKeyByValue,
+  getKeyUserStatus,
+  UserStatusValue,
+} from "./pra/lib/getKeyFromObject";
 
 type User = {
   name: string;
@@ -29,6 +33,7 @@ type TwitterCardProps = CommonProps &
 
 export const TwitterCard = (props: TwitterCardProps) => {
   console.log(getKeyByValue(UserStatusValue, 2));
+  console.log(getKeyUserStatus(2));
 
   return (
     <div className="bg-gray-200 pt-20 pb-80 flex items-center justify-center">
